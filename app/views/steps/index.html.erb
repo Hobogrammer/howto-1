@@ -15,8 +15,8 @@
       <tr>
         <td><%= step.instructions %></td>
         <td><%= link_to 'Show', [step.how_to, step] %></td>
-        <td><%= link_to 'Edit', edit_step_path(step) %></td>
-        <td><%= link_to 'Destroy', [step.how_to, step], { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_how_to_step_path(@how_to, step) %></td>
+        <td><%= link_to 'Destroy', [step.how_to, step], data: { confirm: 'Are you sure?' }, method: :delete %></td>
       </tr>
     <% end %>
   </tbody>

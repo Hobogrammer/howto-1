@@ -10,6 +10,7 @@ class HowTosController < ApplicationController
   # GET /how_tos/1
   # GET /how_tos/1.json
   def show
+    @steps = @how_to.steps
   end
 
   # GET /how_tos/new

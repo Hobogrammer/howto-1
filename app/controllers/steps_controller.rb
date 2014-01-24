@@ -1,15 +1,18 @@
 class StepsController < ApplicationController
   before_action :set_how_to
-  before_action :set_step, only: [:show, :edit, :update, :destroy]
+  #before_action :set_step, only: [:show, :edit, :update, :destroy]
 
   # GET /steps
   # GET /steps.json
-  def index
+ def index
+    @steps = @how_to.steps
   end
 
   # GET /steps/1
   # GET /steps/1.json
   def show
+    @step = @how_to.steps.find(params[:id])
+
     respond_to do |format|
       format.html
       format.xml { render :xml => @step }
@@ -23,16 +26,17 @@ class StepsController < ApplicationController
 
   # GET /steps/1/edit
   def edit
+    @step = @how_to.steps.find(params[:id])
   end
 
   # POST /steps
   # POST /steps.json
   def create
-    @step = Step.new(step_params)
+    @step = @how_to.steps.new(step_params)
 
     respond_to do |format|
       if @step.save
-        format.html { redirect_to @step, notice: 'Step was successfully created.' }
+        format.html { redirect_to([@step.how_to, @step], notice: 'Step was successfully created.') }
         format.json { render action: 'show', status: :created, location: @step }
       else
         format.html { render action: 'new' }
@@ -44,6 +48,7 @@ class StepsController < ApplicationController
   # PATCH/PUT /steps/1
   # PATCH/PUT /steps/1.json
   def update
+    @step = @how_to.step.find(params[:id])
     respond_to do |format|
       if @step.update(step_params)
         format.html { redirect_to @step, notice: 'Step was successfully updated.' }
@@ -58,9 +63,10 @@ class StepsController < ApplicationController
   # DELETE /steps/1
   # DELETE /steps/1.json
   def destroy
+    @step = @how_to.steps.find(params[:id])
     @step.destroy
     respond_to do |format|
-      format.html { redirect_to steps_url }
+      format.html { redirect_to how_to_steps_url }
       format.json { head :no_content }
     end
   end
@@ -68,7 +74,7 @@ class StepsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_how_to
-      @how_to = How_to.find(params[:id])
+      @how_to = HowTo.find(params[:how_to_id])
     end
 
     def set_steps

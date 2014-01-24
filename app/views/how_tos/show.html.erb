@@ -10,6 +10,15 @@
   <%= @how_to.description %>
 </p>
 
-<%= link_to 'Steps', edit_steps_path(@how_to) %> |
+<tbody>
+  <% @steps.each do |step| %>
+  <tr>
+    <td><%= step.instructions %></td>
+  </tr>
+  <% end %>
+</table>
+
+
 <%= link_to 'Edit', edit_how_to_path(@how_to) %> |
-<%= link_to 'Back', how_tos_path %>
+<%= link_to 'Back', how_tos_path %> |
+<%= link_to 'New Step', new_how_to_step_path(@how_to) %>

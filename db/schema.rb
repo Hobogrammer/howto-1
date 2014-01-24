@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140123221255) do
+ActiveRecord::Schema.define(version: 20140124223534) do
 
   create_table "how_tos", force: true do |t|
     t.string   "title"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140123221255) do
     t.text     "instructions"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "how_to_id"
   end
 
 end
