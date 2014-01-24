@@ -1,0 +1,27 @@
+<h1>Listing steps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instructions</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @steps.each do |step| %>
+      <tr>
+        <td><%= step.instructions %></td>
+        <td><%= link_to 'Show', [step.how_to, step] %></td>
+        <td><%= link_to 'Edit', edit_step_path(step) %></td>
+        <td><%= link_to 'Destroy', [step.how_to, step], { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Step', new_how_to_step_path %>

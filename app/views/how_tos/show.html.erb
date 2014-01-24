@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @how_to.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @how_to.description %>
+</p>
+
+<%= link_to 'Steps', edit_steps_path(@how_to) %> |
+<%= link_to 'Edit', edit_how_to_path(@how_to) %> |
+<%= link_to 'Back', how_tos_path %>

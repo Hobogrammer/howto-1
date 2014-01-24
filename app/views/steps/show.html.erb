@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Instructions:</strong>
+  <%= @step.instructions %>
+</p>
+
+<%= link_to 'Edit', edit_step_path(@step.how_to, @step) %> |
+<%= link_to 'Back', how_to_steps_path(@step.how_to) %>
