@@ -1,6 +1,6 @@
 class StepsController < ApplicationController
   before_action :set_how_to
-  #before_action :set_step, only: [:show, :edit, :update, :destroy]
+  before_action :set_step, only: [:show, :edit, :update, :destroy]
 
   # GET /steps
   # GET /steps.json
@@ -11,7 +11,6 @@ class StepsController < ApplicationController
   # GET /steps/1
   # GET /steps/1.json
   def show
-    @step = @how_to.steps.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -26,7 +25,6 @@ class StepsController < ApplicationController
 
   # GET /steps/1/edit
   def edit
-    @step = @how_to.steps.find(params[:id])
   end
 
   # POST /steps
@@ -48,10 +46,9 @@ class StepsController < ApplicationController
   # PATCH/PUT /steps/1
   # PATCH/PUT /steps/1.json
   def update
-    @step = @how_to.step.find(params[:id])
     respond_to do |format|
       if @step.update(step_params)
-        format.html { redirect_to @step, notice: 'Step was successfully updated.' }
+        format.html { redirect_to how_to_step_path(@how_to,@step), notice: 'Step was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -63,7 +60,6 @@ class StepsController < ApplicationController
   # DELETE /steps/1
   # DELETE /steps/1.json
   def destroy
-    @step = @how_to.steps.find(params[:id])
     @step.destroy
     respond_to do |format|
       format.html { redirect_to how_to_steps_url }
@@ -77,8 +73,8 @@ class StepsController < ApplicationController
       @how_to = HowTo.find(params[:how_to_id])
     end
 
-    def set_steps
-      @steps = @how_to.steps.find(params[:id])
+    def set_step
+      @step = @how_to.steps.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
